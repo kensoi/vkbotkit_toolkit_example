@@ -1,6 +1,6 @@
 # Рабочий шаблон для работы с vkbotkit
 📘[Репозиторий vkbotkit](https://github.com/kensoi/vkbotkit)  
-📄[Репозиторий шаблона](https://github.com/kensoi/vkbotkit_app) ([Использовать](https://github.com/kensoi/vkbotkit_app/generate))  
+📄[Репозиторий шаблона](https://github.com/kensoi/vkbotkit_app) ([Использовать](https://github.com/kensoi/vkbotkit_toolkit_example/generate))  
 📕[Репозиторий с примерами](https://github.com/kensoi/vkbotkit_examples)  
 
 ## Инструкция по установке

@@ -1,43 +1,38 @@
 """
-Корень приложения VKBotKit для работы через сообщество
+Bot application
 """
 import asyncio
-from os import (
-    environ,
-    getenv
-    )
-from sys import argv
+from os import environ
 from dotenv import load_dotenv
-from vkbotkit import Librabot
-from vkbotkit.objects import (
-    #decorators,
-    #filters,
-    enums,
-    #library_module
-)
+from vkbotkit import ToolKit
 
 
 async def main():
     """
     главная функция приложения
     """
-    if "-d" in argv:
-        token = environ['DEBUG_TOKEN']
-        log_level = enums.LogLevel.DEBUG
+    
+    tools = ToolKit(environ['DEBUG_TOKEN'])
+    tools.configure_logger()
 
-    else:
-        token = environ['PUBLIC_TOKEN']
-        log_level = enums.LogLevel.INFO
+    response = await tools.uploader.document("graffiti.png", None, None, 517114114, "graffiti")
+    att = f"doc{response.graffiti.owner_id}_{response.graffiti.id}"
 
-    config_log = getenv("CONFIG_LOG", default = "")
+    await send_message(tools, None, att)
+    await send_message(tools, "вечер в хату собаки")
 
-    bot = Librabot(token)
-    bot.toolkit.configure_logger(log_level, "f" in config_log, "c" in config_log)
-    bot.library.import_library()
 
-    # START POLLING
-    await bot.start_polling()
+async def send_message(tools:ToolKit = None, message: str = None, attachment: str = None):
+    """
+    Отправить сообщение
+    """
+    await tools.api.messages.send(
+        random_id = tools.gen_random(), 
+        peer_id = 2000000007, 
+        message = message,
+        attachment = attachment)
 
+        
 if __name__ == "__main__":
     load_dotenv()
     loop = asyncio.new_event_loop()
