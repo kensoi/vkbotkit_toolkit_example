@@ -18,6 +18,7 @@ pip install -r requirements.txt
 PUBLIC_TOKEN=TESTTOKEN1
 DEBUG_TOKEN=TESTTOKEN2
 CONFIG_LOG=fc
+GROUP_ID=1
 ```
 
 ```
